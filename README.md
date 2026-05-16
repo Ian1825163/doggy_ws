@@ -85,6 +85,7 @@ Use these folders as the temporary media drop zone while the mechanical design i
 
 - CAD files and screenshots: [`docs/cad/`](docs/cad/)
 - Robot photos: [`docs/photos/`](docs/photos/)
+- RL deployment plan: [`docs/rl_workflow.md`](docs/rl_workflow.md)
 - Onshape source document: <https://cad.onshape.com/documents/2c1464eb386438bae70ebabf>
 
 Suggested upload slots:
