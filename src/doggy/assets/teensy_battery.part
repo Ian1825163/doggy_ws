@@ -1,0 +1,13 @@
+{
+    "configuration": "default",
+    "documentId": "2c1464eb386438bae70ebabf",
+    "documentMicroversion": "92a0e13e00f154b427dfd6ad",
+    "elementId": "53d5fc72064684cae7992004",
+    "fullConfiguration": "default",
+    "id": "Maih1slx1JmEc2/59",
+    "isStandardContent": false,
+    "name": "teensy_battery <1>",
+    "partId": "JHD",
+    "suppressed": false,
+    "type": "Part"
+}

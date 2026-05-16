@@ -1,0 +1,13 @@
+{
+    "configuration": "default",
+    "documentId": "2c1464eb386438bae70ebabf",
+    "documentMicroversion": "92a0e13e00f154b427dfd6ad",
+    "elementId": "25e89efd6a61f80599af5a14",
+    "fullConfiguration": "default",
+    "id": "MzLQUd1AQjbiwMKNs",
+    "isStandardContent": false,
+    "name": "out_leg_v4-Mirrored <1>",
+    "partId": "JMH",
+    "suppressed": false,
+    "type": "Part"
+}

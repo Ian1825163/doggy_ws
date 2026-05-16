@@ -1,0 +1,7 @@
+{
+  "documentId": "2c1464eb386438bae70ebabf",
+  "outputFormat": "urdf",
+  "assemblyName": "doggy_ros_export",
+  "useScads": true,
+  "drawCollision": false
+}

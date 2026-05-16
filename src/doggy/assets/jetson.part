@@ -1,0 +1,13 @@
+{
+    "configuration": "default",
+    "documentId": "2c1464eb386438bae70ebabf",
+    "documentMicroversion": "92a0e13e00f154b427dfd6ad",
+    "elementId": "2d4af67c9f8d5f6a26c4eae9",
+    "fullConfiguration": "default",
+    "id": "MsuurdGIVJm2foAC4",
+    "isStandardContent": false,
+    "name": "jetson <1>",
+    "partId": "JHD",
+    "suppressed": false,
+    "type": "Part"
+}

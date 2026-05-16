@@ -1,0 +1,28 @@
+# ROS / colcon generated output
+build/
+install/
+log/
+src/build/
+src/install/
+src/log/
+
+# Local secrets
+.env
+src/.env
+**/.env
+
+# Python cache/test output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Editor/local agent state
+.vscode/
+.agents/
+.codex/
+.empty-git-template/
+
+# ROS bag recordings
+*.bag
+rosbag2_*/
+quadruped_bag*/
