@@ -297,3 +297,28 @@ Add later when available:
 - `/motor_feedback`
 - `/foot_contacts`
 - `/policy_debug`
+
+## STS3032 Feedback Bring-Up
+
+Current `src/teensy_motor.ino` writes STS sync-write packets on `Serial4`, but
+it does not yet forward USB packets to the STS bus or send motor feedback back
+to Jetson. To test feedback now, connect Jetson to the STS bus through a direct
+USB servo adapter, or add a Teensy bridge/readback firmware path first.
+
+Direct bus feedback test:
+
+```bash
+ros2 run quadruped_control sts_feedback_test_node --ros-args \
+  -p serial_port:=/dev/ttyUSB0 \
+  -p baud_rate:=1000000 \
+  -p servo_ids:="[1,2,3,4,5,6,7,8,9,10,11,12]"
+```
+
+Watch the raw JSON:
+
+```bash
+ros2 topic echo /sts_feedback_raw
+```
+
+The test node reads from register `56` with length `8`, which covers present
+position plus the adjacent raw status bytes used for early bring-up.

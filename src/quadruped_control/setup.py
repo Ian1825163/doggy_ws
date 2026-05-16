@@ -30,6 +30,7 @@ setup(
             'joint_state_bridge_node = quadruped_control.joint_state_bridge_node:main',
             'policy_node = quadruped_control.policy_node:main',
             'safety_node = quadruped_control.safety_node:main',
+            'sts_feedback_test_node = quadruped_control.sts_feedback_test_node:main',
 
         ],
     },
