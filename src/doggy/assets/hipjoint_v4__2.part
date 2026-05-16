@@ -1,13 +1,13 @@
 {
     "configuration": "default",
     "documentId": "2c1464eb386438bae70ebabf",
-    "documentMicroversion": "e41d9ea0abc63de21485264c",
+    "documentMicroversion": "b48ed41f0c8f5f368f3c6820",
     "elementId": "32b62ae1621e5902d87a1fb0",
     "fullConfiguration": "default",
-    "id": "M9M7oPErKpbMLUOi0",
+    "id": "M+4/RxtGHcDXvdy69",
     "isStandardContent": false,
-    "name": "hipjoint_v4 <1>",
-    "partId": "JFD",
+    "name": "hipjoint_v4 <2>",
+    "partId": "JGD",
     "suppressed": false,
     "type": "Part"
 }

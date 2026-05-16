@@ -27,6 +27,9 @@ setup(
             'keyboard_node       = quadruped_control.keyboard_node:main',
             'gait_generator_node = quadruped_control.gait_generator_node:main',
             'motor_control_node  = quadruped_control.motor_control_node:main',
+            'joint_state_bridge_node = quadruped_control.joint_state_bridge_node:main',
+            'policy_node = quadruped_control.policy_node:main',
+            'safety_node = quadruped_control.safety_node:main',
 
         ],
     },

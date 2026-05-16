@@ -8,7 +8,7 @@ Latest Onshape assembly checked: `doggy_ros_export`
 
 - Estimated total mass from Onshape part mass properties: `1.348 kg`
 - Mass-bearing part occurrences found: `44`
-- Current local `src/doggy/robot.urdf` is not the final full robot export yet. It still represents an older partial export, so use the Onshape mass above until the URDF export succeeds again.
+- Current local `src/doggy/robot.urdf` is the regenerated full robot export from `doggy_ros_export`.
 
 Largest mass contributors:
 
@@ -21,18 +21,21 @@ Largest mass contributors:
 | `Feetech STS2032` motors | `0.025 kg` each |
 | `foot` | `0.020 kg` each |
 
-Current export blocker:
+Current URDF status:
 
 - `onshape-to-robot doggy` finds all four legs and 16 DOFs.
-- Export currently fails because `frame_base_link` has an empty Onshape occurrence.
-- Fix in Onshape: attach `frame_base_link` to the `body <1>` instance, not to the assembly origin or a floating connector. Keep it at the body center with ROS orientation: X forward, Y left, Z up.
+- `check_urdf src/doggy/robot.urdf` succeeds.
+- Root link is `body`.
+- Frames exported as links: `base_link`, `imu`, `RL_foot`, `RR_foot`, `FR_foot`, `FL_foot`.
+- URDF total inertial mass: `1.348077 kg`.
 
-After that fix, rerun:
+Regenerate and validate after CAD changes:
 
 ```bash
 cd ~/doggy_ws/src
 onshape-to-robot doggy
-check_urdf doggy/robot.urdf
+cd ~/doggy_ws
+check_urdf src/doggy/robot.urdf
 ```
 
 ## Runtime Architecture
@@ -40,9 +43,14 @@ check_urdf doggy/robot.urdf
 Keep motor commands and visualization state separate:
 
 ```text
-policy_node or gait_generator_node
-  publishes /joint_angles
-  12 real motor angles
+gait_generator_node
+  publishes /joint_angles directly in scripted gait mode
+
+policy_node
+  publishes /joint_angles_unsafe in RL mode
+
+safety_node
+  clamps /joint_angles_unsafe into /joint_angles
 
 motor_control_node
   subscribes /joint_angles
@@ -82,9 +90,9 @@ motor3    = real third motor angle
 knee      = nonlinear_linkage_fk(motor3)
 ```
 
-## ROS Nodes To Add
+## ROS Nodes
 
-1. `joint_state_bridge_node`
+1. `joint_state_bridge_node` implemented in `quadruped_control`
 
    Inputs:
 
@@ -101,33 +109,60 @@ knee      = nonlinear_linkage_fk(motor3)
    - Compute `*_knee` from `*_motor3` using the MATLAB/Python linkage FK.
    - Apply per-leg sign and zero offsets.
 
-2. `policy_node`
+   Run:
+
+   ```bash
+   ros2 run quadruped_control joint_state_bridge_node
+   ```
+
+2. `policy_node` implemented as a deployment scaffold
 
    Inputs:
 
-   - `/imu`
-   - `/joint_states` or motor feedback when available
-   - `/cmd_vel` or `/gait_cmd`
+   - `/gait_cmd`
 
    Outputs:
 
-   - `/joint_angles`
+   - `/joint_angles_unsafe`
 
    Responsibilities:
 
-   - Run the trained policy at a fixed control rate.
-   - Clamp output angles.
-   - Fall back to stand pose when policy is disabled.
+   - Keep a stable ROS interface for the future trained policy.
+   - Publish a safe stand pose while no inference backend is wired.
+   - Later: load the trained policy and output 12 motor target angles.
 
-3. `safety_node`
+   Run:
+
+   ```bash
+   ros2 run quadruped_control policy_node
+   ```
+
+3. `safety_node` implemented in `quadruped_control`
 
    Responsibilities:
 
-   - E-stop gate.
-   - Joint limit checks.
-   - Body tilt/fall detection.
+   - Gate `/joint_angles_unsafe` into `/joint_angles`.
+   - Clamp joint angle commands.
    - Command timeout handling.
-   - Optional torque/current/temperature checks if Teensy exposes them later.
+   - Publish stand pose on timeout or disabled state.
+   - Later: add IMU tilt/fall checks and motor feedback checks.
+
+   Run:
+
+   ```bash
+   ros2 run quadruped_control safety_node
+   ```
+
+Launch options:
+
+```bash
+# Existing scripted gait path, now also publishing /joint_states
+ros2 launch quadruped_bringup bringup.launch.py
+
+# RL deployment path:
+# policy_node -> safety_node -> /joint_angles -> motor_control_node
+ros2 launch quadruped_bringup rl_bringup.launch.py
+```
 
 ## Calibration Before RL
 

@@ -37,6 +37,66 @@ def _ang_diff(a, b): return _wrap_pi(a - b)
 def _unwrap_near(a, ref): return ref + _ang_diff(a, ref)
 
 
+def linkage_theta4_candidates(gamm: float):
+    """Return the two passive-knee solutions for motor3 angle gamm."""
+    a_ = R * math.sin(gamm)
+    R1_ = math.sqrt(a_**2 + H**2)
+    tmp = R * math.cos(gamm) - 3.0
+    R2_sq = max(R4**2 - tmp**2, 0.0)
+    theta1 = math.atan2(H, a_)
+
+    A = 2.0 * R1_ * R3 * math.sin(theta1)
+    B = 2.0 * R1_ * R3 * math.cos(theta1) - 2.0 * R3 * R4
+    C = R1_**2 - R2_sq + R3**2 + R4**2 - 2.0 * R1_ * R4 * math.cos(theta1)
+
+    disc = C**2 * (A**2 + B**2 - C**2)
+    sq = math.sqrt(max(disc, 0.0))
+
+    th4_1 = math.atan2(-A * B + sq, A**2 - C**2)
+    th4_2 = math.atan2(-A * B - sq, A**2 - C**2)
+    return th4_1, th4_2
+
+
+def linkage_theta4_distance_error(gamm: float, th4: float):
+    """Distance closure error for a theta4 candidate, in mm."""
+    bx, by, bz = R * math.cos(gamm), R * math.sin(gamm), H
+    c1x = 3.0
+    c1y = R4 + R3 * math.cos(th4)
+    c1z = R3 * math.sin(th4)
+    d = math.sqrt((bx - c1x)**2 + (by - c1y)**2 + (bz - c1z)**2)
+    return abs(d - L3)
+
+
+class LinkageKneeMap:
+    """Stateful nonlinear map from motor3 angle to passive knee angle."""
+
+    def __init__(self, hysteresis_mm: float = 0.4):
+        self.hysteresis_mm = hysteresis_mm
+        self._inited = False
+        self._choice = 1
+
+    def compute(self, motor3_rad: float, do_update: bool = True):
+        th4_1, th4_2 = linkage_theta4_candidates(motor3_rad)
+        e1 = linkage_theta4_distance_error(motor3_rad, th4_1)
+        e2 = linkage_theta4_distance_error(motor3_rad, th4_2)
+
+        choice = self._choice
+        if not self._inited:
+            choice = 1 if e1 <= e2 else 2
+            if do_update:
+                self._inited = True
+        elif choice == 1:
+            if e2 < e1 - self.hysteresis_mm:
+                choice = 2
+        elif e1 < e2 - self.hysteresis_mm:
+            choice = 1
+
+        if do_update:
+            self._choice = choice
+
+        return th4_1 if choice == 1 else th4_2
+
+
 def _R_apply(alp, bet, v):
     """Ry(alp) @ Rx(bet) @ v"""
     cb, sb = math.cos(bet), math.sin(bet)
@@ -78,35 +138,9 @@ class Leg:
 
     # ── FK end-effector (4-bar) ───────────────────────────────────────────────
     def _fk_end_effector(self, alp, bet, gamm, do_update: bool):
-        a_   = R * math.sin(gamm)
-        R1_  = math.sqrt(a_**2 + H**2)
-        tmp  = R * math.cos(gamm) - 3.0
-        disc_r2 = R4**2 - tmp**2
-        if disc_r2 < 0: disc_r2 = 0
-        # R2 not used directly; keep formula consistent with MATLAB
-        theta1 = math.atan2(H, a_)
-
-        A = 2.0 * R1_ * R3 * math.sin(theta1)
-        B = 2.0 * R1_ * R3 * math.cos(theta1) - 2.0 * R3 * R4
-        C = R1_**2 - (R4**2 - tmp**2) + R3**2 + R4**2 - 2.0*R1_*R4*math.cos(theta1)
-
-        disc = C**2 * (A**2 + B**2 - C**2)
-        disc = max(disc, 0.0)
-        sq   = math.sqrt(disc)
-
-        th4_1 = math.atan2(-A*B + sq, A**2 - C**2)
-        th4_2 = math.atan2(-A*B - sq, A**2 - C**2)
-
-        # distance error to L3
-        Bx, By, Bz = R*math.cos(gamm), R*math.sin(gamm), H
-        def dist_err(th4):
-            C1x = 3.0
-            C1y = R4 + R3*math.cos(th4)
-            C1z = R3*math.sin(th4)
-            d = math.sqrt((Bx-C1x)**2 + (By-C1y)**2 + (Bz-C1z)**2)
-            return abs(d - L3)
-
-        e1, e2 = dist_err(th4_1), dist_err(th4_2)
+        th4_1, th4_2 = linkage_theta4_candidates(gamm)
+        e1 = linkage_theta4_distance_error(gamm, th4_1)
+        e2 = linkage_theta4_distance_error(gamm, th4_2)
 
         # hysteresis
         choice = self._last_theta4

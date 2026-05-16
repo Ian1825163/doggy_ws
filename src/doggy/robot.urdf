@@ -5,13 +5,13 @@
   <!-- Link body -->
   <link name="body">
     <inertial>
-      <origin xyz="7.5947e-16 -5.15675e-17 0.0399695" rpy="0 0 0"/>
+      <origin xyz="7.49086e-16 -5.14495e-17 0.0124695" rpy="0 0 0"/>
       <mass value="0.918789"/>
-      <inertia ixx="0.00151945" ixy="3.0159e-06" ixz="-7.83336e-18" iyy="0.00466865" iyz="-7.55553e-19" izz="0.00490665"/>
+      <inertia ixx="0.00151945" ixy="3.0159e-06" ixz="-7.89774e-18" iyy="0.00466865" iyz="-8.47033e-19" izz="0.00490665"/>
     </inertial>
     <!-- Part teensy_battery -->
     <visual>
-      <origin xyz="0 0.00283482 0.003" rpy="0 -0 0"/>
+      <origin xyz="6.88094e-18 0.00283482 -0.0245" rpy="0 -0 0"/>
       <geometry>
         <mesh filename="package://assets/teensy_battery.stl"/>
       </geometry>
@@ -20,14 +20,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 0.00283482 0.003" rpy="0 -0 0"/>
+      <origin xyz="6.88094e-18 0.00283482 -0.0245" rpy="0 -0 0"/>
       <geometry>
         <mesh filename="package://assets/teensy_battery.stl"/>
       </geometry>
     </collision>
     <!-- Part jetson -->
     <visual>
-      <origin xyz="1.33227e-15 -2.77556e-17 0.061" rpy="0 -0 0"/>
+      <origin xyz="1.33298e-15 -1.90646e-17 0.0335" rpy="0 -0 0"/>
       <geometry>
         <mesh filename="package://assets/jetson.stl"/>
       </geometry>
@@ -36,14 +36,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="1.33227e-15 -2.77556e-17 0.061" rpy="0 -0 0"/>
+      <origin xyz="1.33298e-15 -1.90646e-17 0.0335" rpy="0 -0 0"/>
       <geometry>
         <mesh filename="package://assets/jetson.stl"/>
       </geometry>
     </collision>
     <!-- Part feetech_sts2032_20g -->
     <visual>
-      <origin xyz="0.1145 -0.036 0.02471" rpy="3.14159 3.21287e-15 -1.5708"/>
+      <origin xyz="0.1145 -0.036 -0.00279" rpy="3.14159 3.21287e-15 -1.5708"/>
       <geometry>
         <mesh filename="package://assets/feetech_sts2032_20g.stl"/>
       </geometry>
@@ -52,14 +52,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.1145 -0.036 0.02471" rpy="3.14159 3.21287e-15 -1.5708"/>
+      <origin xyz="0.1145 -0.036 -0.00279" rpy="3.14159 3.21287e-15 -1.5708"/>
       <geometry>
         <mesh filename="package://assets/feetech_sts2032_20g.stl"/>
       </geometry>
     </collision>
     <!-- Part feetech_sts2032_20g_2 -->
     <visual>
-      <origin xyz="0.1145 0.036 0.02471" rpy="-3.14159 2.49122e-15 -1.5708"/>
+      <origin xyz="0.1145 0.036 -0.00279" rpy="-3.14159 2.49122e-15 -1.5708"/>
       <geometry>
         <mesh filename="package://assets/feetech_sts2032_20g.stl"/>
       </geometry>
@@ -68,14 +68,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.1145 0.036 0.02471" rpy="-3.14159 2.49122e-15 -1.5708"/>
+      <origin xyz="0.1145 0.036 -0.00279" rpy="-3.14159 2.49122e-15 -1.5708"/>
       <geometry>
         <mesh filename="package://assets/feetech_sts2032_20g.stl"/>
       </geometry>
     </collision>
     <!-- Part feetech_sts2032_20g_3 -->
     <visual>
-      <origin xyz="-0.1145 0.036 0.02471" rpy="-3.14159 -2.78275e-15 1.5708"/>
+      <origin xyz="-0.1145 0.036 -0.00279" rpy="-3.14159 -2.78275e-15 1.5708"/>
       <geometry>
         <mesh filename="package://assets/feetech_sts2032_20g.stl"/>
       </geometry>
@@ -84,14 +84,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.1145 0.036 0.02471" rpy="-3.14159 -2.78275e-15 1.5708"/>
+      <origin xyz="-0.1145 0.036 -0.00279" rpy="-3.14159 -2.78275e-15 1.5708"/>
       <geometry>
         <mesh filename="package://assets/feetech_sts2032_20g.stl"/>
       </geometry>
     </collision>
     <!-- Part motor_holder_for_onshape_mir -->
     <visual>
-      <origin xyz="-0.096 0.03 0.058" rpy="-3.14159 -2.4213e-15 1.5708"/>
+      <origin xyz="-0.096 0.03 0.0305" rpy="-3.14159 -2.4213e-15 1.5708"/>
       <geometry>
         <mesh filename="package://assets/motor_holder_for_onshape_mir.stl"/>
       </geometry>
@@ -100,14 +100,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.096 0.03 0.058" rpy="-3.14159 -2.4213e-15 1.5708"/>
+      <origin xyz="-0.096 0.03 0.0305" rpy="-3.14159 -2.4213e-15 1.5708"/>
       <geometry>
         <mesh filename="package://assets/motor_holder_for_onshape_mir.stl"/>
       </geometry>
     </collision>
     <!-- Part motor_holder_for_onshape_mir_2 -->
     <visual>
-      <origin xyz="0.096 -0.03 0.058" rpy="3.14159 2.4213e-15 -1.5708"/>
+      <origin xyz="0.096 -0.03 0.0305" rpy="3.14159 2.4213e-15 -1.5708"/>
       <geometry>
         <mesh filename="package://assets/motor_holder_for_onshape_mir.stl"/>
       </geometry>
@@ -116,14 +116,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.096 -0.03 0.058" rpy="3.14159 2.4213e-15 -1.5708"/>
+      <origin xyz="0.096 -0.03 0.0305" rpy="3.14159 2.4213e-15 -1.5708"/>
       <geometry>
         <mesh filename="package://assets/motor_holder_for_onshape_mir.stl"/>
       </geometry>
     </collision>
     <!-- Part 身體上板_v2 -->
     <visual>
-      <origin xyz="0 -2.77556e-17 0" rpy="0 -0 0"/>
+      <origin xyz="-2.75162e-17 -2.84213e-17 -0.0275" rpy="3.24138e-43 8.96831e-44 5.65283e-58"/>
       <geometry>
         <mesh filename="package://assets/身體上板_v2.stl"/>
       </geometry>
@@ -132,14 +132,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 -2.77556e-17 0" rpy="0 -0 0"/>
+      <origin xyz="-2.75162e-17 -2.84213e-17 -0.0275" rpy="3.24138e-43 8.96831e-44 5.65283e-58"/>
       <geometry>
         <mesh filename="package://assets/身體上板_v2.stl"/>
       </geometry>
     </collision>
     <!-- Part motor_holder_for_onshape -->
     <visual>
-      <origin xyz="0.096 0.03 0.058" rpy="-2.29887e-16 -2.4213e-15 1.5708"/>
+      <origin xyz="0.096 0.03 0.0305" rpy="-2.29887e-16 -2.4213e-15 1.5708"/>
       <geometry>
         <mesh filename="package://assets/motor_holder_for_onshape.stl"/>
       </geometry>
@@ -148,14 +148,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.096 0.03 0.058" rpy="-2.29887e-16 -2.4213e-15 1.5708"/>
+      <origin xyz="0.096 0.03 0.0305" rpy="-2.29887e-16 -2.4213e-15 1.5708"/>
       <geometry>
         <mesh filename="package://assets/motor_holder_for_onshape.stl"/>
       </geometry>
     </collision>
     <!-- Part 身體上板_v3 -->
     <visual>
-      <origin xyz="1.33227e-15 -2.77556e-17 0.058" rpy="0 -0 0"/>
+      <origin xyz="1.30475e-15 -2.84213e-17 0.0305" rpy="3.24138e-43 8.96831e-44 5.65283e-58"/>
       <geometry>
         <mesh filename="package://assets/身體上板_v3.stl"/>
       </geometry>
@@ -164,14 +164,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="1.33227e-15 -2.77556e-17 0.058" rpy="0 -0 0"/>
+      <origin xyz="1.30475e-15 -2.84213e-17 0.0305" rpy="3.24138e-43 8.96831e-44 5.65283e-58"/>
       <geometry>
         <mesh filename="package://assets/身體上板_v3.stl"/>
       </geometry>
     </collision>
     <!-- Part motor_holder_for_onshape_2 -->
     <visual>
-      <origin xyz="-0.096 -0.03 0.058" rpy="-3.24241e-16 2.4213e-15 -1.5708"/>
+      <origin xyz="-0.096 -0.03 0.0305" rpy="-3.24241e-16 2.4213e-15 -1.5708"/>
       <geometry>
         <mesh filename="package://assets/motor_holder_for_onshape.stl"/>
       </geometry>
@@ -180,14 +180,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.096 -0.03 0.058" rpy="-3.24241e-16 2.4213e-15 -1.5708"/>
+      <origin xyz="-0.096 -0.03 0.0305" rpy="-3.24241e-16 2.4213e-15 -1.5708"/>
       <geometry>
         <mesh filename="package://assets/motor_holder_for_onshape.stl"/>
       </geometry>
     </collision>
     <!-- Part feetech_sts2032_20g_4 -->
     <visual>
-      <origin xyz="-0.1145 -0.036 0.02471" rpy="3.14159 -2.71142e-15 1.5708"/>
+      <origin xyz="-0.1145 -0.036 -0.00279" rpy="3.14159 -2.71142e-15 1.5708"/>
       <geometry>
         <mesh filename="package://assets/feetech_sts2032_20g.stl"/>
       </geometry>
@@ -196,12 +196,42 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.1145 -0.036 0.02471" rpy="3.14159 -2.71142e-15 1.5708"/>
+      <origin xyz="-0.1145 -0.036 -0.00279" rpy="3.14159 -2.71142e-15 1.5708"/>
       <geometry>
         <mesh filename="package://assets/feetech_sts2032_20g.stl"/>
       </geometry>
     </collision>
   </link>
+  <!-- Frame imu (dummy link + fixed joint) -->
+  <link name="imu">
+    <origin xyz="0 0 0" rpy="0 -0 0"/>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-9"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="imu_frame" type="fixed">
+    <origin xyz="-2.89644e-18 -2.1684e-18 -0.0145" rpy="0 -0 3.14159"/>
+    <parent link="body"/>
+    <child link="imu"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <!-- Frame base_link (dummy link + fixed joint) -->
+  <link name="base_link">
+    <origin xyz="0 0 0" rpy="0 -0 0"/>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-9"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="base_link_frame" type="fixed">
+    <origin xyz="-2.89644e-18 -2.35336e-18 0.003" rpy="-3.24138e-43 -8.96831e-44 -3.14159"/>
+    <parent link="body"/>
+    <child link="base_link"/>
+    <axis xyz="0 0 0"/>
+  </joint>
   <!-- Link hipjoint -->
   <link name="hipjoint">
     <inertial>
@@ -211,7 +241,7 @@
     </inertial>
     <!-- Part feetech_sts2032_20g_5 -->
     <visual>
-      <origin xyz="-1.00614e-16 0.0082 -0.0117" rpy="-3.14159 -1.5708 0"/>
+      <origin xyz="-9.80119e-17 0.0082 -0.0117" rpy="-3.14159 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/feetech_sts2032_20g__2.stl"/>
       </geometry>
@@ -220,7 +250,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-1.00614e-16 0.0082 -0.0117" rpy="-3.14159 -1.5708 0"/>
+      <origin xyz="-9.80119e-17 0.0082 -0.0117" rpy="-3.14159 -1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/feetech_sts2032_20g__2.stl"/>
       </geometry>
@@ -251,7 +281,7 @@
     </inertial>
     <!-- Part feetech_sts2032_20g_mir1 -->
     <visual>
-      <origin xyz="0.0076 5.55112e-17 -0.011" rpy="-1.5708 1.5708 0"/>
+      <origin xyz="0.0076 2.77556e-17 -0.011" rpy="-1.5708 1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/feetech_sts2032_20g_mir1.stl"/>
       </geometry>
@@ -260,14 +290,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.0076 5.55112e-17 -0.011" rpy="-1.5708 1.5708 0"/>
+      <origin xyz="0.0076 2.77556e-17 -0.011" rpy="-1.5708 1.5708 0"/>
       <geometry>
         <mesh filename="package://assets/feetech_sts2032_20g_mir1.stl"/>
       </geometry>
     </collision>
     <!-- Part inner_leg_v4_mirrored -->
     <visual>
-      <origin xyz="-0.488782 -0.0163943 0" rpy="-1.58437e-31 -0 0"/>
+      <origin xyz="-0.488782 -0.0163943 0" rpy="3.63592e-32 -0 0"/>
       <geometry>
         <mesh filename="package://assets/inner_leg_v4_mirrored.stl"/>
       </geometry>
@@ -276,7 +306,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.488782 -0.0163943 0" rpy="-1.58437e-31 -0 0"/>
+      <origin xyz="-0.488782 -0.0163943 0" rpy="3.63592e-32 -0 0"/>
       <geometry>
         <mesh filename="package://assets/inner_leg_v4_mirrored.stl"/>
       </geometry>
@@ -301,13 +331,13 @@
   <!-- Link linkage_a_v2_0713_mir -->
   <link name="linkage_a_v2_0713_mir">
     <inertial>
-      <origin xyz="-1.5794e-18 0.004854 -0.00429672" rpy="0 0 0"/>
+      <origin xyz="-1.56891e-18 0.004854 -0.00429672" rpy="0 0 0"/>
       <mass value="0.00221365"/>
       <inertia ixx="1.58132e-07" ixy="4.15877e-38" ixz="3.86206e-38" iyy="5.9308e-08" iyz="1.83018e-08" izz="1.96619e-07"/>
     </inertial>
     <!-- Part linkage_a_v2_0713_mir -->
     <visual>
-      <origin xyz="0 -1.38778e-17 -6.93889e-18" rpy="4.87018e-31 7.39142e-33 2.44719e-31"/>
+      <origin xyz="0 -1.38778e-17 0" rpy="4.87018e-31 7.39142e-33 2.44719e-31"/>
       <geometry>
         <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
       </geometry>
@@ -316,7 +346,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 -1.38778e-17 -6.93889e-18" rpy="4.87018e-31 7.39142e-33 2.44719e-31"/>
+      <origin xyz="0 -1.38778e-17 0" rpy="4.87018e-31 7.39142e-33 2.44719e-31"/>
       <geometry>
         <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
       </geometry>
@@ -324,7 +354,7 @@
   </link>
   <!-- Joint from thigh_mir to linkage_a_v2_0713_mir -->
   <joint name="RL_motor3" type="revolute">
-    <origin xyz="0.0181 5.55112e-17 -0.011" rpy="-1.5708 9.6691e-17 1.5708"/>
+    <origin xyz="0.0181 2.77556e-17 -0.011" rpy="-1.5708 2.19156e-16 1.5708"/>
     <parent link="thigh_mir"/>
     <child link="linkage_a_v2_0713_mir"/>
     <axis xyz="0 0 1"/>
@@ -339,7 +369,7 @@
     </inertial>
     <!-- Part foot -->
     <visual>
-      <origin xyz="6.93889e-18 0 -0.005" rpy="3.14159 1.58437e-31 0"/>
+      <origin xyz="6.93889e-18 0 -0.005" rpy="3.14159 -1.27732e-31 0"/>
       <geometry>
         <mesh filename="package://assets/foot.stl"/>
       </geometry>
@@ -348,14 +378,14 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="6.93889e-18 0 -0.005" rpy="3.14159 1.58437e-31 0"/>
+      <origin xyz="6.93889e-18 0 -0.005" rpy="3.14159 -1.27732e-31 0"/>
       <geometry>
         <mesh filename="package://assets/foot.stl"/>
       </geometry>
     </collision>
     <!-- Part foot_tip -->
     <visual>
-      <origin xyz="-0.00395 0.07985 -0.005" rpy="3.14159 1.58437e-31 0"/>
+      <origin xyz="-0.00395 0.07985 -0.005" rpy="3.14159 -1.27732e-31 0"/>
       <geometry>
         <mesh filename="package://assets/foot_tip.stl"/>
       </geometry>
@@ -364,15 +394,30 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="-0.00395 0.07985 -0.005" rpy="3.14159 1.58437e-31 0"/>
+      <origin xyz="-0.00395 0.07985 -0.005" rpy="3.14159 -1.27732e-31 0"/>
       <geometry>
         <mesh filename="package://assets/foot_tip.stl"/>
       </geometry>
     </collision>
   </link>
+  <!-- Frame RL_foot (dummy link + fixed joint) -->
+  <link name="RL_foot">
+    <origin xyz="0 0 0" rpy="0 -0 0"/>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-9"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="RL_foot_frame" type="fixed">
+    <origin xyz="-3e-06 0.0919 -0.005" rpy="-1.5708 1.27732e-31 3.14159"/>
+    <parent link="calf"/>
+    <child link="RL_foot"/>
+    <axis xyz="0 0 0"/>
+  </joint>
   <!-- Joint from thigh_mir to calf -->
   <joint name="RL_knee" type="revolute">
-    <origin xyz="2.30083e-13 -0.08 -0.007" rpy="-6.53674e-26 -8.38583e-27 1.5708"/>
+    <origin xyz="2.30043e-13 -0.08 -0.007" rpy="6.12323e-17 -6.30424e-31 1.5708"/>
     <parent link="thigh_mir"/>
     <child link="calf"/>
     <axis xyz="0 0 1"/>
@@ -380,7 +425,7 @@
   </joint>
   <!-- Joint from hipjoint to thigh_mir -->
   <joint name="RL_hip_pitch" type="revolute">
-    <origin xyz="-1.17961e-16 0.0187 -0.0117" rpy="-1.5708 -2.22459e-28 -3.14159"/>
+    <origin xyz="-1.11022e-16 0.0187 -0.0117" rpy="-1.5708 -3.06162e-16 -3.14159"/>
     <parent link="hipjoint"/>
     <child link="thigh_mir"/>
     <axis xyz="0 0 1"/>
@@ -388,9 +433,630 @@
   </joint>
   <!-- Joint from body to hipjoint -->
   <joint name="RL_hip_roll" type="revolute">
-    <origin xyz="0.125 -0.036 0.02471" rpy="-3.14159 1.5708 0"/>
+    <origin xyz="0.125 -0.036 -0.00279" rpy="-3.14159 1.5708 0"/>
     <parent link="body"/>
     <child link="hipjoint"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-0.349066" upper="0.174533"/>
+  </joint>
+  <!-- Link hipjoint_mir -->
+  <link name="hipjoint_mir">
+    <inertial>
+      <origin xyz="-0.00584991 0.00133744 -0.0104817" rpy="0 0 0"/>
+      <mass value="0.0326833"/>
+      <inertia ixx="2.96469e-06" ixy="3.49142e-08" ixz="2.84132e-08" iyy="2.71546e-06" iyz="-1.55681e-07" izz="4.37936e-06"/>
+    </inertial>
+    <!-- Part hipjoint_v4_2 -->
+    <visual>
+      <origin xyz="-0.00579 -0.0067 -0.0117" rpy="1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="package://assets/hipjoint_v4__2.stl"/>
+      </geometry>
+      <material name="hipjoint_v4_2_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00579 -0.0067 -0.0117" rpy="1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="package://assets/hipjoint_v4__2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part feetech_sts2032_20g_6 -->
+    <visual>
+      <origin xyz="-4.33681e-19 -0.0082 -0.0117" rpy="-1.97215e-30 1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/feetech_sts2032_20g__2.stl"/>
+      </geometry>
+      <material name="feetech_sts2032_20g_6_material">
+        <color rgba="0 0 0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-4.33681e-19 -0.0082 -0.0117" rpy="-1.97215e-30 1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/feetech_sts2032_20g__2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link thigh_mir_2 -->
+  <link name="thigh_mir_2">
+    <inertial>
+      <origin xyz="0.000153018 -0.019063 -0.0124043" rpy="0 0 0"/>
+      <mass value="0.0369251"/>
+      <inertia ixx="3.91276e-05" ixy="2.21124e-07" ixz="2.83248e-09" iyy="5.04453e-06" iyz="3.13067e-07" izz="3.81231e-05"/>
+    </inertial>
+    <!-- Part feetech_sts2032_20g_mir1_2 -->
+    <visual>
+      <origin xyz="0.0076 0 -0.011" rpy="-1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/feetech_sts2032_20g_mir1.stl"/>
+      </geometry>
+      <material name="feetech_sts2032_20g_mir1_2_material">
+        <color rgba="0 0 0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0076 0 -0.011" rpy="-1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/feetech_sts2032_20g_mir1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part inner_leg_v4_mirrored_2 -->
+    <visual>
+      <origin xyz="-0.488782 -0.0163943 -6.93889e-18" rpy="-5.14606e-32 -0 0"/>
+      <geometry>
+        <mesh filename="package://assets/inner_leg_v4_mirrored.stl"/>
+      </geometry>
+      <material name="inner_leg_v4_mirrored_2_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.488782 -0.0163943 -6.93889e-18" rpy="-5.14606e-32 -0 0"/>
+      <geometry>
+        <mesh filename="package://assets/inner_leg_v4_mirrored.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part out_leg_v4_mirrored_2 -->
+    <visual>
+      <origin xyz="-0.0039 -0.00579 -0.011" rpy="1.72563e-31 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/out_leg_v4_mirrored.stl"/>
+      </geometry>
+      <material name="out_leg_v4_mirrored_2_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0039 -0.00579 -0.011" rpy="1.72563e-31 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/out_leg_v4_mirrored.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link linkage_a_v2_0713_mir_2 -->
+  <link name="linkage_a_v2_0713_mir_2">
+    <inertial>
+      <origin xyz="-1.56891e-18 0.004854 -0.00429672" rpy="0 0 0"/>
+      <mass value="0.00221365"/>
+      <inertia ixx="1.58132e-07" ixy="1.11896e-38" ixz="9.41822e-40" iyy="5.9308e-08" iyz="1.83018e-08" izz="1.96619e-07"/>
+    </inertial>
+    <!-- Part linkage_a_v2_0713_mir_2 -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 5.14606e-32"/>
+      <geometry>
+        <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
+      </geometry>
+      <material name="linkage_a_v2_0713_mir_2_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 -0 5.14606e-32"/>
+      <geometry>
+        <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from thigh_mir_2 to linkage_a_v2_0713_mir_2 -->
+  <joint name="FL_motor3" type="revolute">
+    <origin xyz="0.0147 0 -0.011" rpy="-1.5708 6.89354e-17 1.5708"/>
+    <parent link="thigh_mir_2"/>
+    <child link="linkage_a_v2_0713_mir_2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-1.0472" upper="1.48353"/>
+  </joint>
+  <!-- Link calf_2 -->
+  <link name="calf_2">
+    <inertial>
+      <origin xyz="3.21658e-05 0.0313528 -0.0060139" rpy="0 0 0"/>
+      <mass value="0.023"/>
+      <inertia ixx="2.85205e-05" ixy="-3.65425e-08" ixz="-1.02718e-11" iyy="8.23021e-07" iyz="-1.00228e-08" izz="2.87417e-05"/>
+    </inertial>
+    <!-- Part foot_2 -->
+    <visual>
+      <origin xyz="-2.77556e-17 4.33681e-19 -0.006" rpy="3.14159 5.14606e-32 0"/>
+      <geometry>
+        <mesh filename="package://assets/foot.stl"/>
+      </geometry>
+      <material name="foot_2_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-2.77556e-17 4.33681e-19 -0.006" rpy="3.14159 5.14606e-32 0"/>
+      <geometry>
+        <mesh filename="package://assets/foot.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part foot_tip_2 -->
+    <visual>
+      <origin xyz="-0.00395 0.07985 -0.006" rpy="3.14159 5.14606e-32 0"/>
+      <geometry>
+        <mesh filename="package://assets/foot_tip.stl"/>
+      </geometry>
+      <material name="foot_tip_2_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00395 0.07985 -0.006" rpy="3.14159 5.14606e-32 0"/>
+      <geometry>
+        <mesh filename="package://assets/foot_tip.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Frame FL_foot (dummy link + fixed joint) -->
+  <link name="FL_foot">
+    <origin xyz="0 0 0" rpy="0 -0 0"/>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-9"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="FL_foot_frame" type="fixed">
+    <origin xyz="-3e-06 0.0919 -0.006" rpy="-1.5708 -5.14606e-32 3.14159"/>
+    <parent link="calf_2"/>
+    <child link="FL_foot"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <!-- Joint from thigh_mir_2 to calf_2 -->
+  <joint name="FL_knee" type="revolute">
+    <origin xyz="2.30081e-13 -0.08 -0.006" rpy="-6.70532e-30 -7.2455e-30 1.5708"/>
+    <parent link="thigh_mir_2"/>
+    <child link="calf_2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-1.309" upper="1.5708"/>
+  </joint>
+  <!-- Joint from hipjoint_mir to thigh_mir_2 -->
+  <joint name="FL_hip_pitch" type="revolute">
+    <origin xyz="1.25767e-17 -0.0187 -0.0117" rpy="1.5708 -9.36772e-31 -3.14159"/>
+    <parent link="hipjoint_mir"/>
+    <child link="thigh_mir_2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-1.5708" upper="0.174533"/>
+  </joint>
+  <!-- Joint from body to hipjoint_mir -->
+  <joint name="FL_hip_roll" type="revolute">
+    <origin xyz="-0.125 -0.036 -0.00279" rpy="-1.51223e-15 1.5708 0"/>
+    <parent link="body"/>
+    <child link="hipjoint_mir"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-0.174533" upper="0.349066"/>
+  </joint>
+  <!-- Link hipjoint_2 -->
+  <link name="hipjoint_2">
+    <inertial>
+      <origin xyz="-0.00584991 -0.00133744 -0.0104817" rpy="0 0 0"/>
+      <mass value="0.0326833"/>
+      <inertia ixx="2.96469e-06" ixy="-3.49142e-08" ixz="2.84132e-08" iyy="2.71546e-06" iyz="1.55681e-07" izz="4.37936e-06"/>
+    </inertial>
+    <!-- Part feetech_sts2032_20g_7 -->
+    <visual>
+      <origin xyz="-8.84709e-17 0.0082 -0.0117" rpy="-3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/feetech_sts2032_20g__2.stl"/>
+      </geometry>
+      <material name="feetech_sts2032_20g_7_material">
+        <color rgba="0 0 0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-8.84709e-17 0.0082 -0.0117" rpy="-3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/feetech_sts2032_20g__2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part hipjoint_v4_3 -->
+    <visual>
+      <origin xyz="-0.00579 0.0067 -0.0117" rpy="-1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="package://assets/hipjoint_v4.stl"/>
+      </geometry>
+      <material name="hipjoint_v4_3_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00579 0.0067 -0.0117" rpy="-1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="package://assets/hipjoint_v4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link thigh -->
+  <link name="thigh">
+    <inertial>
+      <origin xyz="-5.38791e-05 0.013613 -0.0118373" rpy="0 0 0"/>
+      <mass value="0.0619252"/>
+      <inertia ixx="4.33463e-05" ixy="-3.10234e-07" ixz="1.35578e-08" iyy="7.00882e-06" iyz="-3.04724e-08" izz="4.36589e-05"/>
+    </inertial>
+    <!-- Part feetech_sts2032_20g_8 -->
+    <visual>
+      <origin xyz="0.0076 -2.77556e-17 -0.011" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/feetech_sts2032_20g__3.stl"/>
+      </geometry>
+      <material name="feetech_sts2032_20g_8_material">
+        <color rgba="0 0 0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0076 -2.77556e-17 -0.011" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/feetech_sts2032_20g__3.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part out_leg_v4 -->
+    <visual>
+      <origin xyz="-0.0039 0.00579 -0.011" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/out_leg_v4.stl"/>
+      </geometry>
+      <material name="out_leg_v4_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0039 0.00579 -0.011" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/out_leg_v4.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part inner_leg_v4 -->
+    <visual>
+      <origin xyz="-0.488782 0.0163943 -6.93889e-18" rpy="3.14159 -0 0"/>
+      <geometry>
+        <mesh filename="package://assets/inner_leg_v4.stl"/>
+      </geometry>
+      <material name="inner_leg_v4_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.488782 0.0163943 -6.93889e-18" rpy="3.14159 -0 0"/>
+      <geometry>
+        <mesh filename="package://assets/inner_leg_v4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link linkage_a_v2_0713_mir_3 -->
+  <link name="linkage_a_v2_0713_mir_3">
+    <inertial>
+      <origin xyz="-1.56891e-18 0.004854 -0.00429672" rpy="0 0 0"/>
+      <mass value="0.00221365"/>
+      <inertia ixx="1.58132e-07" ixy="-5.14392e-42" ixz="-4.32962e-43" iyy="5.9308e-08" iyz="1.83018e-08" izz="1.96619e-07"/>
+    </inertial>
+    <!-- Part linkage_a_v2_0713_mir_3 -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 -2.36568e-35"/>
+      <geometry>
+        <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
+      </geometry>
+      <material name="linkage_a_v2_0713_mir_3_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 -0 -2.36568e-35"/>
+      <geometry>
+        <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from thigh to linkage_a_v2_0713_mir_3 -->
+  <joint name="FR_motor3" type="revolute">
+    <origin xyz="0.0147 0 -0.011" rpy="-1.5708 6.16791e-17 1.5708"/>
+    <parent link="thigh"/>
+    <child link="linkage_a_v2_0713_mir_3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-1.48353" upper="1.0472"/>
+  </joint>
+  <!-- Link calf_3 -->
+  <link name="calf_3">
+    <inertial>
+      <origin xyz="3.21658e-05 -0.0313528 -0.0059861" rpy="0 0 0"/>
+      <mass value="0.023"/>
+      <inertia ixx="2.85205e-05" ixy="3.65425e-08" ixz="1.02718e-11" iyy="8.23021e-07" iyz="-1.00228e-08" izz="2.87417e-05"/>
+    </inertial>
+    <!-- Part foot_3 -->
+    <visual>
+      <origin xyz="0 -4.33681e-19 -0.006" rpy="0 -5.52464e-33 0"/>
+      <geometry>
+        <mesh filename="package://assets/foot.stl"/>
+      </geometry>
+      <material name="foot_3_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -4.33681e-19 -0.006" rpy="0 -5.52464e-33 0"/>
+      <geometry>
+        <mesh filename="package://assets/foot.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part foot_tip_3 -->
+    <visual>
+      <origin xyz="-0.00395 -0.07985 -0.006" rpy="0 -5.52464e-33 0"/>
+      <geometry>
+        <mesh filename="package://assets/foot_tip.stl"/>
+      </geometry>
+      <material name="foot_tip_3_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00395 -0.07985 -0.006" rpy="0 -5.52464e-33 0"/>
+      <geometry>
+        <mesh filename="package://assets/foot_tip.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Frame FR_foot (dummy link + fixed joint) -->
+  <link name="FR_foot">
+    <origin xyz="0 0 0" rpy="0 -0 0"/>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-9"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="FR_foot_frame" type="fixed">
+    <origin xyz="-3e-06 -0.0919 -0.006" rpy="1.5708 5.52464e-33 3.14159"/>
+    <parent link="calf_3"/>
+    <child link="FR_foot"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <!-- Joint from thigh to calf_3 -->
+  <joint name="FR_knee" type="revolute">
+    <origin xyz="2.29983e-13 0.08 -0.006" rpy="3.36134e-27 -4.48177e-28 -1.5708"/>
+    <parent link="thigh"/>
+    <child link="calf_3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-1.309" upper="1.5708"/>
+  </joint>
+  <!-- Joint from hipjoint_2 to thigh -->
+  <joint name="FR_hip_pitch" type="revolute">
+    <origin xyz="-1.01048e-16 0.0187 -0.0117" rpy="-1.5708 8.48025e-30 -3.14159"/>
+    <parent link="hipjoint_2"/>
+    <child link="thigh"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-0.174533" upper="1.5708"/>
+  </joint>
+  <!-- Joint from body to hipjoint_2 -->
+  <joint name="FR_hip_roll" type="revolute">
+    <origin xyz="-0.125 0.036 -0.00279" rpy="-6.89354e-17 1.5708 0"/>
+    <parent link="body"/>
+    <child link="hipjoint_2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-0.349066" upper="0.174533"/>
+  </joint>
+  <!-- Link hipjoint_mir_2 -->
+  <link name="hipjoint_mir_2">
+    <inertial>
+      <origin xyz="-0.00584991 0.00133744 -0.0104817" rpy="0 0 0"/>
+      <mass value="0.0326833"/>
+      <inertia ixx="2.96469e-06" ixy="3.49142e-08" ixz="2.84132e-08" iyy="2.71546e-06" iyz="-1.55681e-07" izz="4.37936e-06"/>
+    </inertial>
+    <!-- Part hipjoint_v4_4 -->
+    <visual>
+      <origin xyz="-0.00579 -0.0067 -0.0117" rpy="1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="package://assets/hipjoint_v4__2.stl"/>
+      </geometry>
+      <material name="hipjoint_v4_4_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00579 -0.0067 -0.0117" rpy="1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="package://assets/hipjoint_v4__2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part feetech_sts2032_20g_9 -->
+    <visual>
+      <origin xyz="4.33681e-19 -0.0082 -0.0117" rpy="5.83757e-29 1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/feetech_sts2032_20g__2.stl"/>
+      </geometry>
+      <material name="feetech_sts2032_20g_9_material">
+        <color rgba="0 0 0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="4.33681e-19 -0.0082 -0.0117" rpy="5.83757e-29 1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/feetech_sts2032_20g__2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link thigh_2 -->
+  <link name="thigh_2">
+    <inertial>
+      <origin xyz="-5.38791e-05 0.013613 -0.0118373" rpy="0 0 0"/>
+      <mass value="0.0619252"/>
+      <inertia ixx="4.33463e-05" ixy="-3.10234e-07" ixz="1.35578e-08" iyy="7.00882e-06" iyz="-3.04724e-08" izz="4.36589e-05"/>
+    </inertial>
+    <!-- Part feetech_sts2032_20g_10 -->
+    <visual>
+      <origin xyz="0.0076 -5.55112e-17 -0.011" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/feetech_sts2032_20g__3.stl"/>
+      </geometry>
+      <material name="feetech_sts2032_20g_10_material">
+        <color rgba="0 0 0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0076 -5.55112e-17 -0.011" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/feetech_sts2032_20g__3.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part out_leg_v4_2 -->
+    <visual>
+      <origin xyz="-0.0039 0.00579 -0.011" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/out_leg_v4.stl"/>
+      </geometry>
+      <material name="out_leg_v4_2_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0039 0.00579 -0.011" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://assets/out_leg_v4.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part inner_leg_v4_2 -->
+    <visual>
+      <origin xyz="-0.488782 0.0163943 -6.93889e-18" rpy="-3.14159 -0 0"/>
+      <geometry>
+        <mesh filename="package://assets/inner_leg_v4.stl"/>
+      </geometry>
+      <material name="inner_leg_v4_2_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.488782 0.0163943 -6.93889e-18" rpy="-3.14159 -0 0"/>
+      <geometry>
+        <mesh filename="package://assets/inner_leg_v4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link linkage_a_v2_0713_mir_4 -->
+  <link name="linkage_a_v2_0713_mir_4">
+    <inertial>
+      <origin xyz="-1.56891e-18 0.004854 -0.00429672" rpy="0 0 0"/>
+      <mass value="0.00221365"/>
+      <inertia ixx="1.58132e-07" ixy="3.14943e-39" ixz="2.65086e-40" iyy="5.9308e-08" iyz="1.83018e-08" izz="1.96619e-07"/>
+    </inertial>
+    <!-- Part linkage_a_v2_0713_mir_4 -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 1.44841e-32"/>
+      <geometry>
+        <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
+      </geometry>
+      <material name="linkage_a_v2_0713_mir_4_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 -0 1.44841e-32"/>
+      <geometry>
+        <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from thigh_2 to linkage_a_v2_0713_mir_4 -->
+  <joint name="RR_motor3" type="revolute">
+    <origin xyz="0.0181 -5.55112e-17 -0.011" rpy="-1.5708 6.16791e-17 1.5708"/>
+    <parent link="thigh_2"/>
+    <child link="linkage_a_v2_0713_mir_4"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-1.48353" upper="1.0472"/>
+  </joint>
+  <!-- Link calf_4 -->
+  <link name="calf_4">
+    <inertial>
+      <origin xyz="3.21658e-05 -0.0313528 -0.0059861" rpy="0 0 0"/>
+      <mass value="0.023"/>
+      <inertia ixx="2.85205e-05" ixy="3.65425e-08" ixz="1.02718e-11" iyy="8.23021e-07" iyz="-1.00228e-08" izz="2.87417e-05"/>
+    </inertial>
+    <!-- Part foot_4 -->
+    <visual>
+      <origin xyz="0 0 -0.006" rpy="0 1.39172e-31 0"/>
+      <geometry>
+        <mesh filename="package://assets/foot.stl"/>
+      </geometry>
+      <material name="foot_4_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.006" rpy="0 1.39172e-31 0"/>
+      <geometry>
+        <mesh filename="package://assets/foot.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part foot_tip_4 -->
+    <visual>
+      <origin xyz="-0.00395 -0.07985 -0.006" rpy="0 1.39172e-31 0"/>
+      <geometry>
+        <mesh filename="package://assets/foot_tip.stl"/>
+      </geometry>
+      <material name="foot_tip_4_material">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00395 -0.07985 -0.006" rpy="0 1.39172e-31 0"/>
+      <geometry>
+        <mesh filename="package://assets/foot_tip.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Frame RR_foot (dummy link + fixed joint) -->
+  <link name="RR_foot">
+    <origin xyz="0 0 0" rpy="0 -0 0"/>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-9"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="RR_foot_frame" type="fixed">
+    <origin xyz="-3e-06 -0.0919 -0.006" rpy="1.5708 -1.39172e-31 3.14159"/>
+    <parent link="calf_4"/>
+    <child link="RR_foot"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <!-- Joint from thigh_2 to calf_4 -->
+  <joint name="RR_knee" type="revolute">
+    <origin xyz="2.30041e-13 0.08 -0.006" rpy="-1.49884e-29 4.87234e-30 -1.5708"/>
+    <parent link="thigh_2"/>
+    <child link="calf_4"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-1.5708" upper="1.309"/>
+  </joint>
+  <!-- Joint from hipjoint_mir_2 to thigh_2 -->
+  <joint name="RR_hip_pitch" type="revolute">
+    <origin xyz="1.25767e-17 -0.0187 -0.0117" rpy="1.5708 -3.24173e-30 3.14159"/>
+    <parent link="hipjoint_mir_2"/>
+    <child link="thigh_2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-0.174533" upper="1.5708"/>
+  </joint>
+  <!-- Joint from body to hipjoint_mir_2 -->
+  <joint name="RR_hip_roll" type="revolute">
+    <origin xyz="0.125 0.036 -0.00279" rpy="3.14159 1.5708 0"/>
+    <parent link="body"/>
+    <child link="hipjoint_mir_2"/>
     <axis xyz="0 0 1"/>
     <limit effort="10" velocity="10" lower="-0.174533" upper="0.349066"/>
   </joint>

@@ -7,8 +7,9 @@ Doggy is a small quadruped robot project running on ROS 2. This workspace keeps 
 - `quadruped_control` contains keyboard input, gait generation, inverse kinematics, and the motor serial bridge.
 - `quadruped_bringup` launches the control nodes and records the main gait, communication, and IMU topics.
 - `doggy` contains the Onshape-generated URDF, mesh assets, and export config.
-- The URDF assembly is still being rebuilt. The `RL` leg DOF setup is being used as the first reference before duplicating the remaining legs and frames.
+- The URDF export contains all four legs, 16 DOFs, `base_link`, `imu`, and four foot frames.
 - The calf/knee linkage is nonlinear, so the exact motor-to-knee relation should live in the control or joint-state conversion code instead of a simple URDF gear relation.
+- RL deployment scaffolding now includes a policy node, safety gate, and joint-state bridge.
 
 ## Workspace Layout
 
@@ -50,6 +51,15 @@ Useful individual nodes:
 ros2 run quadruped_control keyboard_node
 ros2 run quadruped_control gait_generator_node
 ros2 run quadruped_control motor_control_node
+ros2 run quadruped_control joint_state_bridge_node
+ros2 run quadruped_control policy_node
+ros2 run quadruped_control safety_node
+```
+
+RL scaffold launch:
+
+```bash
+ros2 launch quadruped_bringup rl_bringup.launch.py
 ```
 
 ## Onshape URDF Export
