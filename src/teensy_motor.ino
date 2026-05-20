@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include <math.h>
 #include <IntervalTimer.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 struct Vec3 {
@@ -14,6 +16,14 @@ class Leg;
 // -----------------------------
 static constexpr uint32_t BAUD_SERVO = 1000000;
 static constexpr uint32_t BAUD_USB   = 115200;
+
+// ROS bridge mode:
+//   Jetson -> Teensy: $ANGLES,<seq>,d1,d2,...,d12\n
+//   Teensy -> Jetson: $ACK,<seq>,1\n and $HB,<seq>\n
+static constexpr bool ENABLE_ROS_BRIDGE = true;
+static constexpr uint32_t HEARTBEAT_MS = 100;          // 10 Hz
+static constexpr uint32_t COMMAND_TIMEOUT_MS = 500;    // fall back to stand
+static constexpr uint32_t FAILSAFE_STAND_MS = 100;     // resend stand at 10 Hz
 
 
 static constexpr uint16_t CENTER_TICK = 2048;   // STS 12-bit center
@@ -174,6 +184,14 @@ void sendMotorPacketDeg(double d1, double d2, double d3,
                         double d4, double d5, double d6,
                         double d7, double d8, double d9,
                         double d10,double d11,double d12);
+void sendMotorPacketDegArray(const double deg[12]);
+void sendStandPose();
+void handleUsbSerial();
+void handleCommandLine(const char* line);
+bool parseAnglesLine(const char* line, uint32_t& seq, double deg[12]);
+uint32_t parseSeqBestEffort(const char* line);
+void sendAck(uint32_t seq, bool ok);
+void sendHeartbeat();
 
 
 
@@ -582,6 +600,23 @@ Leg LF;
 Leg RB;
 Leg LB;
 
+static constexpr size_t USB_LINE_MAX = 256;
+char usbLine[USB_LINE_MAX];
+size_t usbLineLen = 0;
+bool usbLineOverflow = false;
+
+uint32_t heartbeatSeq = 0;
+unsigned long lastHeartbeatMs = 0;
+unsigned long lastCommandMs = 0;
+unsigned long lastFailsafeStandMs = 0;
+
+const double STAND_DEG[12] = {
+   0.0, -69.636, -33.474,
+  -0.0,  69.636,  33.474,
+   0.0,  69.636,  33.474,
+  -0.0, -69.636, -33.474
+};
+
 
 
 
@@ -669,6 +704,123 @@ void sendMotorPacketDeg(double d1, double d2, double d3,
                      deg2rad(d4), deg2rad(d5), deg2rad(d6),
                      deg2rad(d7), deg2rad(d8), deg2rad(d9),
                      deg2rad(d10),deg2rad(d11),deg2rad(d12));
+}
+
+void sendMotorPacketDegArray(const double deg[12])
+{
+  sendMotorPacketDeg(
+    deg[0],  deg[1],  deg[2],
+    deg[3],  deg[4],  deg[5],
+    deg[6],  deg[7],  deg[8],
+    deg[9],  deg[10], deg[11]
+  );
+}
+
+void sendStandPose()
+{
+  sendMotorPacketDegArray(STAND_DEG);
+}
+
+void sendAck(uint32_t seq, bool ok)
+{
+  Serial.print("$ACK,");
+  Serial.print(seq);
+  Serial.print(",");
+  Serial.println(ok ? 1 : 0);
+}
+
+void sendHeartbeat()
+{
+  Serial.print("$HB,");
+  Serial.println(++heartbeatSeq);
+}
+
+uint32_t parseSeqBestEffort(const char* line)
+{
+  if(strncmp(line, "$ANGLES,", 8) != 0) return 0;
+  char* end = nullptr;
+  unsigned long seq = strtoul(line + 8, &end, 10);
+  if(end == line + 8) return 0;
+  return (uint32_t)seq;
+}
+
+bool parseAnglesLine(const char* line, uint32_t& seq, double deg[12])
+{
+  if(strncmp(line, "$ANGLES,", 8) != 0) return false;
+
+  const char* p = line + 8;
+  char* end = nullptr;
+
+  unsigned long parsedSeq = strtoul(p, &end, 10);
+  if(end == p || *end != ',') return false;
+  seq = (uint32_t)parsedSeq;
+  p = end + 1;
+
+  for(int i = 0; i < 12; ++i){
+    deg[i] = strtod(p, &end);
+    if(end == p) return false;
+    if(!isfinite(deg[i])) return false;
+    p = end;
+
+    if(i < 11){
+      if(*p != ',') return false;
+      ++p;
+    }else{
+      while(*p == ' ' || *p == '\t' || *p == '\r') ++p;
+      if(*p != '\0') return false;
+    }
+  }
+
+  return true;
+}
+
+void handleCommandLine(const char* line)
+{
+  if(strncmp(line, "$ANGLES,", 8) != 0){
+    return;
+  }
+
+  uint32_t seq = 0;
+  double deg[12];
+  if(parseAnglesLine(line, seq, deg)){
+    sendMotorPacketDegArray(deg);
+    lastCommandMs = millis();
+    sendAck(seq, true);
+  }else{
+    sendAck(parseSeqBestEffort(line), false);
+  }
+}
+
+void handleUsbSerial()
+{
+  while(Serial.available() > 0){
+    char c = (char)Serial.read();
+
+    if(c == '\r'){
+      continue;
+    }
+
+    if(c == '\n'){
+      if(!usbLineOverflow){
+        usbLine[usbLineLen] = '\0';
+        handleCommandLine(usbLine);
+      }
+      usbLineLen = 0;
+      usbLineOverflow = false;
+      continue;
+    }
+
+    if(usbLineOverflow){
+      continue;
+    }
+
+    if(usbLineLen < USB_LINE_MAX - 1){
+      usbLine[usbLineLen++] = c;
+    }else{
+      usbLineLen = 0;
+      usbLineOverflow = true;
+    }
+  }
 }
 
 
@@ -795,22 +947,38 @@ void setup(){
 
 
   // 先送一次固定姿勢 (deg)
-  sendMotorPacketDeg(
-    0.0,  -75.0, -30.0,
-   -0.0,   75.0, 35.0,
-    0.0,   75.0,  30.0,
-   -0.0,  -75.0, -30.0
-  );
+  sendStandPose();
   delay(1000);
 
+  lastCommandMs = millis();
+  lastFailsafeStandMs = millis();
+  lastHeartbeatMs = millis();
 
-  if(ENABLE_TIMER){
+  if(!ENABLE_ROS_BRIDGE && ENABLE_TIMER){
     controlTimer.begin(updateControlISR, CTRL_US);
   }
 }
 
 
 void loop(){
+  if(ENABLE_ROS_BRIDGE){
+    handleUsbSerial();
+
+    unsigned long now = millis();
+    if(now - lastHeartbeatMs >= HEARTBEAT_MS){
+      lastHeartbeatMs = now;
+      sendHeartbeat();
+    }
+
+    if(now - lastCommandMs >= COMMAND_TIMEOUT_MS &&
+       now - lastFailsafeStandMs >= FAILSAFE_STAND_MS){
+      lastFailsafeStandMs = now;
+      sendStandPose();
+    }
+
+    return;
+  }
+
   //control gait here
   static bool enable_trot = true;
   static bool enable_walk = false;
@@ -880,4 +1048,3 @@ void loop(){
     Serial.print(", a3(rad): "); Serial.println((double)debug_a3, 6);
   }*/
 }
-
