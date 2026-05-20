@@ -5,9 +5,9 @@
   <!-- Link body -->
   <link name="body">
     <inertial>
-      <origin xyz="7.49086e-16 -5.14495e-17 0.0124695" rpy="0 0 0"/>
+      <origin xyz="7.47198e-16 -5.12135e-17 0.0124695" rpy="0 0 0"/>
       <mass value="0.918789"/>
-      <inertia ixx="0.00151945" ixy="3.0159e-06" ixz="-7.89774e-18" iyy="0.00466865" iyz="-8.47033e-19" izz="0.00490665"/>
+      <inertia ixx="0.00151945" ixy="3.0159e-06" ixz="-7.86047e-18" iyy="0.00466865" iyz="-8.38563e-19" izz="0.00490665"/>
     </inertial>
     <!-- Part teensy_battery -->
     <visual>
@@ -328,38 +328,6 @@
       </geometry>
     </collision>
   </link>
-  <!-- Link linkage_a_v2_0713_mir -->
-  <link name="linkage_a_v2_0713_mir">
-    <inertial>
-      <origin xyz="-1.56891e-18 0.004854 -0.00429672" rpy="0 0 0"/>
-      <mass value="0.00221365"/>
-      <inertia ixx="1.58132e-07" ixy="4.15877e-38" ixz="3.86206e-38" iyy="5.9308e-08" iyz="1.83018e-08" izz="1.96619e-07"/>
-    </inertial>
-    <!-- Part linkage_a_v2_0713_mir -->
-    <visual>
-      <origin xyz="0 -1.38778e-17 0" rpy="4.87018e-31 7.39142e-33 2.44719e-31"/>
-      <geometry>
-        <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
-      </geometry>
-      <material name="linkage_a_v2_0713_mir_material">
-        <color rgba="0.74902 0.74902 0.74902 1.0"/>
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 -1.38778e-17 0" rpy="4.87018e-31 7.39142e-33 2.44719e-31"/>
-      <geometry>
-        <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
-      </geometry>
-    </collision>
-  </link>
-  <!-- Joint from thigh_mir to linkage_a_v2_0713_mir -->
-  <joint name="RL_motor3" type="revolute">
-    <origin xyz="0.0181 2.77556e-17 -0.011" rpy="-1.5708 2.19156e-16 1.5708"/>
-    <parent link="thigh_mir"/>
-    <child link="linkage_a_v2_0713_mir"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="10" lower="-1.0472" upper="1.48353"/>
-  </joint>
   <!-- Link calf -->
   <link name="calf">
     <inertial>
@@ -535,38 +503,6 @@
       </geometry>
     </collision>
   </link>
-  <!-- Link linkage_a_v2_0713_mir_2 -->
-  <link name="linkage_a_v2_0713_mir_2">
-    <inertial>
-      <origin xyz="-1.56891e-18 0.004854 -0.00429672" rpy="0 0 0"/>
-      <mass value="0.00221365"/>
-      <inertia ixx="1.58132e-07" ixy="1.11896e-38" ixz="9.41822e-40" iyy="5.9308e-08" iyz="1.83018e-08" izz="1.96619e-07"/>
-    </inertial>
-    <!-- Part linkage_a_v2_0713_mir_2 -->
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 5.14606e-32"/>
-      <geometry>
-        <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
-      </geometry>
-      <material name="linkage_a_v2_0713_mir_2_material">
-        <color rgba="0.74902 0.74902 0.74902 1.0"/>
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 -0 5.14606e-32"/>
-      <geometry>
-        <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
-      </geometry>
-    </collision>
-  </link>
-  <!-- Joint from thigh_mir_2 to linkage_a_v2_0713_mir_2 -->
-  <joint name="FL_motor3" type="revolute">
-    <origin xyz="0.0147 0 -0.011" rpy="-1.5708 6.89354e-17 1.5708"/>
-    <parent link="thigh_mir_2"/>
-    <child link="linkage_a_v2_0713_mir_2"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="10" lower="-1.0472" upper="1.48353"/>
-  </joint>
   <!-- Link calf_2 -->
   <link name="calf_2">
     <inertial>
@@ -742,38 +678,6 @@
       </geometry>
     </collision>
   </link>
-  <!-- Link linkage_a_v2_0713_mir_3 -->
-  <link name="linkage_a_v2_0713_mir_3">
-    <inertial>
-      <origin xyz="-1.56891e-18 0.004854 -0.00429672" rpy="0 0 0"/>
-      <mass value="0.00221365"/>
-      <inertia ixx="1.58132e-07" ixy="-5.14392e-42" ixz="-4.32962e-43" iyy="5.9308e-08" iyz="1.83018e-08" izz="1.96619e-07"/>
-    </inertial>
-    <!-- Part linkage_a_v2_0713_mir_3 -->
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 -2.36568e-35"/>
-      <geometry>
-        <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
-      </geometry>
-      <material name="linkage_a_v2_0713_mir_3_material">
-        <color rgba="0.74902 0.74902 0.74902 1.0"/>
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 -0 -2.36568e-35"/>
-      <geometry>
-        <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
-      </geometry>
-    </collision>
-  </link>
-  <!-- Joint from thigh to linkage_a_v2_0713_mir_3 -->
-  <joint name="FR_motor3" type="revolute">
-    <origin xyz="0.0147 0 -0.011" rpy="-1.5708 6.16791e-17 1.5708"/>
-    <parent link="thigh"/>
-    <child link="linkage_a_v2_0713_mir_3"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="10" lower="-1.48353" upper="1.0472"/>
-  </joint>
   <!-- Link calf_3 -->
   <link name="calf_3">
     <inertial>
@@ -949,38 +853,6 @@
       </geometry>
     </collision>
   </link>
-  <!-- Link linkage_a_v2_0713_mir_4 -->
-  <link name="linkage_a_v2_0713_mir_4">
-    <inertial>
-      <origin xyz="-1.56891e-18 0.004854 -0.00429672" rpy="0 0 0"/>
-      <mass value="0.00221365"/>
-      <inertia ixx="1.58132e-07" ixy="3.14943e-39" ixz="2.65086e-40" iyy="5.9308e-08" iyz="1.83018e-08" izz="1.96619e-07"/>
-    </inertial>
-    <!-- Part linkage_a_v2_0713_mir_4 -->
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 1.44841e-32"/>
-      <geometry>
-        <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
-      </geometry>
-      <material name="linkage_a_v2_0713_mir_4_material">
-        <color rgba="0.74902 0.74902 0.74902 1.0"/>
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 -0 1.44841e-32"/>
-      <geometry>
-        <mesh filename="package://assets/linkage_a_v2_0713_mir.stl"/>
-      </geometry>
-    </collision>
-  </link>
-  <!-- Joint from thigh_2 to linkage_a_v2_0713_mir_4 -->
-  <joint name="RR_motor3" type="revolute">
-    <origin xyz="0.0181 -5.55112e-17 -0.011" rpy="-1.5708 6.16791e-17 1.5708"/>
-    <parent link="thigh_2"/>
-    <child link="linkage_a_v2_0713_mir_4"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="10" lower="-1.48353" upper="1.0472"/>
-  </joint>
   <!-- Link calf_4 -->
   <link name="calf_4">
     <inertial>

@@ -23,6 +23,7 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32MultiArray, String
 import serial as pyserial
+from serial import SerialException
 
 
 class MotorControlNode(Node):
@@ -31,12 +32,14 @@ class MotorControlNode(Node):
 
         self.declare_parameter('serial_port', '/dev/ttyACM0')
         self.declare_parameter('baud_rate',   115200)
-        port = self.get_parameter('serial_port').value
-        baud = int(self.get_parameter('baud_rate').value)
+        self._port = self.get_parameter('serial_port').value
+        self._baud = int(self.get_parameter('baud_rate').value)
 
         # ── serial ──
-        self._ser = pyserial.Serial(port, baud, timeout=0.005)
-        self._lower_latency(port)
+        self._ser = None
+        self._serial_lock = threading.Lock()
+        self._last_serial_error_log = 0.0
+        self._connect_serial()
 
         # ── drop tracking ──
         self._tx_seq  = 0
@@ -53,10 +56,54 @@ class MotorControlNode(Node):
         self._hb_pub    = self.create_publisher(String, '/teensy_hb',  10)
 
         threading.Thread(target=self._reader, daemon=True).start()
+        self.create_timer(1.0, self._reconnect_timer)
         self.create_timer(1.0, self._publish_stats)
-        self.get_logger().info(f"MotorControlNode → {port} @ {baud}")
+        self.get_logger().info(
+            f"MotorControlNode → {self._port} @ {self._baud}")
 
     # ── helpers ───────────────────────────────────────────────────────────────
+    def _connect_serial(self):
+        with self._serial_lock:
+            if self._ser is not None and self._ser.is_open:
+                return True
+
+            try:
+                ser = pyserial.Serial(
+                    self._port, self._baud, timeout=0.005, write_timeout=0.02)
+                self._ser = ser
+            except Exception as e:
+                now = time.monotonic()
+                if now - self._last_serial_error_log >= 1.0:
+                    self._last_serial_error_log = now
+                    self.get_logger().warn(
+                        f"Serial reconnect failed ({self._port}): {e}")
+                return False
+
+        self._lower_latency(self._port)
+        self.get_logger().info(f"Serial connected: {self._port} @ {self._baud}")
+        return True
+
+    def _disconnect_serial(self, context: str, error: Exception):
+        with self._serial_lock:
+            ser = self._ser
+            self._ser = None
+
+        if ser is not None:
+            try:
+                ser.close()
+            except Exception:
+                pass
+
+        now = time.monotonic()
+        if now - self._last_serial_error_log >= 1.0:
+            self._last_serial_error_log = now
+            self.get_logger().error(
+                f"Serial {context}: {error}; disconnected, will retry")
+
+    def _reconnect_timer(self):
+        if self._ser is None:
+            self._connect_serial()
+
     def _lower_latency(self, port: str):
         try:
             dev = port.split('/')[-1]
@@ -77,24 +124,39 @@ class MotorControlNode(Node):
         vals = ",".join(f"{v:.3f}" for v in msg.data)
         line = f"$ANGLES,{seq},{vals}\n"
         try:
-            self._ser.write(line.encode())
+            with self._serial_lock:
+                if self._ser is None:
+                    return
+                self._ser.write(line.encode())
             self._tx_sent += 1
+        except SerialException as e:
+            self._disconnect_serial("write", e)
         except Exception as e:
-            self.get_logger().error(f"Serial write: {e}")
+            self._disconnect_serial("write", e)
 
     # ── RX ────────────────────────────────────────────────────────────────────
     def _reader(self):
         buf = b""
         while True:
             try:
-                chunk = self._ser.read(self._ser.in_waiting or 1)
+                ser = self._ser
+                if ser is None:
+                    time.sleep(0.05)
+                    continue
+
+                chunk = ser.read(ser.in_waiting or 1)
                 if chunk:
                     buf += chunk
                     while b'\n' in buf:
                         raw, buf = buf.split(b'\n', 1)
                         self._handle(raw.decode('ascii', errors='ignore').strip())
+            except SerialException as e:
+                self._disconnect_serial("read", e)
+                buf = b""
+                time.sleep(0.05)
             except Exception as e:
-                self.get_logger().error(f"Serial read: {e}")
+                self._disconnect_serial("read", e)
+                buf = b""
                 time.sleep(0.01)
 
     def _handle(self, line: str):
